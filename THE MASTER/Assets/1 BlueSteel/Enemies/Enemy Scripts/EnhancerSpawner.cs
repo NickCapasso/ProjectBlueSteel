@@ -18,6 +18,6 @@ public class EnhancerSpawner : MonoBehaviour {
 	}
 	
 	void newChaser(){
-	 GameObject Chaser = Instantiate(toSpawn,transform.position,Quaternion.identity) as GameObject;
+	 GameObject Chaser = Instantiate(toSpawn,transform.position,toSpawn.transform.rotation) as GameObject;
 	}
 }
