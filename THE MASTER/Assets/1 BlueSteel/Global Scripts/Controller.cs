@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Controller : MonoBehaviour {
 	public int hp = 100;
-	int movemult = 15;
+	public int movemult = 15;
 	public GameObject BOOLET;
 	public int bulletSpeed;
 	public float fireSpeed;
@@ -11,6 +11,7 @@ public class Controller : MonoBehaviour {
 	public GameObject aimer;
 	public Vector3 aim;
 	public int score;
+	private static int currWorld = 1;
 	void Start () {
 	}
 
@@ -30,8 +31,12 @@ public class Controller : MonoBehaviour {
 		}else if (Input.GetKey ("d")){
 			transform.Translate(Vector3.right * movemult * Time.deltaTime);
 		}
-		if(Input.GetKey ("z")){
+		if(Input.GetKey ("z") && currWorld == 1 && GetComponent<KillCounter>().getKills() > 4){
 			push ();	
+		}
+		if(Input.GetKey ("x") && currWorld == 0 && score >= 25){
+			pop ();
+			score -= 25;
 		}
 		if(Input.GetMouseButton (0)){
 			fire (aimWith(aimer));
@@ -49,7 +54,7 @@ public class Controller : MonoBehaviour {
 	public void fire(Vector3 dir) {
 		try{
 			if (nextFire >= fireSpeed){
-				GameObject bullet = (GameObject) Instantiate(BOOLET, transform.position, Quaternion.identity);
+				GameObject bullet = (GameObject) Instantiate(BOOLET, aimer.transform.position, aimer.transform.rotation);
 				bullet.rigidbody.velocity = dir * bulletSpeed;
 				nextFire =0;
 			}
@@ -74,9 +79,11 @@ public class Controller : MonoBehaviour {
 	
 	public void pop(){
 		Application.LoadLevel(Application.loadedLevel-1);
+		currWorld+=1;
 	}
 	
 	public void push(){
-		Application.LoadLevel(Application.loadedLevel+1);	
+		Application.LoadLevel(Application.loadedLevel+1);
+		currWorld-= 1;
 	}
 }

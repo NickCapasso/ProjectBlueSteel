@@ -2,39 +2,61 @@ using UnityEngine;
 using System.Collections;
 
 public class Move : MonoBehaviour {	
-	private Vector3 pos;
+	private Vector3 myCurrDir;
 	// Object Position
-	private Vector3 plpo;	
+	private Vector3 playerDir;	
 	// Player Position
 	private Vector3 toGo;
-	private Vector3 prev;
+	private Vector3 prevToGo;
 	public float mult;
+	private int homing;
+	public int turnDelay;
+	public int homingPeriod;
 	private GameObject player;
-	private float dist;
+	private float distToGo;
+	public bool isBullet;
 	public int damage;
+	public int tether;
 	private Vector3 dir; //Designed to be read by other scripts, not edited.
 	void Start(){
 		player = GameObject.FindWithTag("Player");
 	}
 	void Update () {
-		pos=transform.position;
-		plpo=player.transform.position;
-		dist=(plpo-pos).magnitude;
-		toGo=plpo-pos;
-		toGo=toGo/toGo.magnitude;
-		dir=mult*(toGo+prev);
+		myCurrDir=transform.position;
+		playerDir=player.transform.position;
+		toGo=playerDir-myCurrDir;
+		distToGo=toGo.magnitude;
+		if(homing == 0 & homingPeriod > 1){	
+			toGo/=toGo.magnitude;
+			dir=mult*(toGo+prevToGo);
+			prevToGo=toGo;
+			homing = turnDelay;
+			homingPeriod -= 1;
+		} else if(homingPeriod == 0) {
+			decay();
+		} else if(homing > 0){
+			homing -= 1;	
+		}
 		transform.Translate(dir);
-		prev=toGo;
 		
-		if(dist<0.5f){
+		if(distToGo < 1.0f){
 			player.GetComponent<Controller>().Damage(damage);
-			Destroy(this.gameObject);		
+			if(isBullet){
+				Destroy(this.gameObject);
+			}
 		}
 	}
 	public float getDist(){
-		return dist;	
+		return distToGo;	
 	}
 	public Vector3 getDir(){
 		return dir;	
+	}
+	private void decay(){
+		if(tether == 0){
+			Destroy(this.gameObject);
+		} else {
+			tether -= 1;
+		}
 	}
 }

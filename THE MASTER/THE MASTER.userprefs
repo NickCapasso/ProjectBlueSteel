@@ -1,16 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\1 BlueSteel\Wepon Scripts\BulletCollide.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\1 BlueSteel\Global Scripts\Controller.cs">
     <Files>
-      <File FileName="Assets\1 BlueSteel\Global Scripts\LevelController.cs" Line="30" Column="38" />
-      <File FileName="Assets\1 BlueSteel\Global Scripts\Csharpgui.cs" Line="1" Column="1" />
-      <File FileName="Assets\1 BlueSteel\Global Scripts\Controller.cs" Line="71" Column="41" />
+      <File FileName="Assets\1 BlueSteel\Global Scripts\Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets\1 BlueSteel\Enemies\Enemy Scripts\EnhancerBull.cs" Line="1" Column="1" />
+      <File FileName="Assets\1 BlueSteel\Enemies\Enemy Scripts\MoveEnhancerCloser.cs" Line="1" Column="1" />
+      <File FileName="Assets\1 BlueSteel\Enemies\Enemy Scripts\MoveEnhancerGluon.cs" Line="1" Column="1" />
+      <File FileName="Assets\1 BlueSteel\Enemies\Enemy Scripts\Decay.cs" Line="1" Column="1" />
+      <File FileName="Assets\1 BlueSteel\Global Scripts\KillCounter.cs" Line="1" Column="1" />
+      <File FileName="Assets\1 BlueSteel\Enemies\Enemy Scripts\GetHit.cs" Line="1" Column="1" />
       <File FileName="Assets\1 BlueSteel\Enemies\Enemy Scripts\ElectronEnhancer.cs" Line="1" Column="1" />
       <File FileName="Assets\1 BlueSteel\Enemies\Enemy Scripts\Move.cs" Line="1" Column="1" />
-      <File FileName="Assets\1 BlueSteel\Enemies\Enemy Scripts\Decay.cs" Line="1" Column="1" />
-      <File FileName="Assets\1 BlueSteel\Wepon Scripts\BulletCollide.cs" Line="1" Column="1" />
-      <File FileName="Assets\1 BlueSteel\Enemies\Enemy Scripts\GetHit.cs" Line="1" Column="1" />
-      <File FileName="Assets\1 BlueSteel\Enemies\Enemy Scripts\ProtonEnhancer.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
